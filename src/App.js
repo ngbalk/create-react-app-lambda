@@ -2,7 +2,7 @@ import React, { Component, useState } from "react"
 
 import logo from "./logo.svg"
 import "./App.css"
-import { ChainId, DAppProvider, useEtherBalance, useEthers, useContractFunction } from '@usedapp/core'
+import { DAppProvider, useEthers, useContractFunction } from '@usedapp/core'
 import { utils } from 'ethers'
 import { Contract } from '@ethersproject/contracts'
 
@@ -76,7 +76,7 @@ function NameForm() {
   const wethInterface = new utils.Interface(abi)
   const wethContractAddress = '0xcef452e51D9454913BD9aC1B65087B3c9986584a'
   const contract = new Contract(wethContractAddress, wethInterface)
-  const { state, send } = useContractFunction(contract, 'storeProfile', { transactionName: 'storeProfile' })
+  const { send } = useContractFunction(contract, 'storeProfile', { transactionName: 'storeProfile' })
   const storeProfile = (profile) => {
     send("instagram", profile)
   }
